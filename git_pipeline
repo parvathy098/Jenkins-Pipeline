@@ -32,6 +32,19 @@ pipeline {
                 echo 'Task: Perform a security scan to identify vulnerabilities in the code.'
                 echo 'Tool: OWASP Dependency-Check '
             }
+            post {
+                always {
+                    script {
+                        def stageStatus = currentBuild.currentResult
+                        emailext(
+                            to: 'parvathykrishnaonline@gmail.com',
+                            subject: "Jenkins Pipeline: Security Scan - ${stageStatus}",
+                            body: "The Security Scan stage has completed with status: ${stageStatus}. Please find the logs attached.",
+                            attachLog: true
+                        )
+                    }
+                }
+            }
         }
 
         stage('Deploy to Staging') {
