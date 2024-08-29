@@ -20,7 +20,7 @@ pipeline {
                 success {
                     script {
                         def stageStatus = currentBuild.currentResult
-                        mail(
+                        emailext(
                             to: 'parvathykrishnaonline@gmail.com',
                             subject: "Jenkins Pipeline: Unit and Integration Tests - ${stageStatus}",
                             body: "The Unit and Integration Tests stage has completed with status: ${stageStatus}. Please find the logs attached.",
@@ -50,7 +50,7 @@ pipeline {
                 success {
                     script {
                         def stageStatus = currentBuild.currentResult
-                        mail(
+                        emailext(
                             to: 'parvathykrishnaonline@gmail.com',
                             subject: "Jenkins Pipeline: Security Scan - ${stageStatus}",
                             body: "The Security Scan stage has completed with status: ${stageStatus}. Please find the logs attached.",
