@@ -100,6 +100,8 @@ pipeline {
             mail to: 'parvathykrishnaonline@gmail.com',
                  subject: "Jenkins Pipeline completed successfully",
                  body: "The entire pipeline has completed successfully."
+                 sh "cat ${env.WORKSPACE}/path_to_log_file.log | mail -s 'Subject' parvathykrishnaonline@gmail.com"
+            
         }
         failure {
             mail to: 'parvathykrishnaonline@gmail.com',
