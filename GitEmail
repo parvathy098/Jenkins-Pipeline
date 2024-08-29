@@ -17,11 +17,11 @@ pipeline {
                 echo 'Tools: JUnit for unit tests, Selenium for integration tests'
             }
             post {
-                always {
+                success {
                     script {
                         def stageStatus = currentBuild.currentResult
-                        emailext(
-                            to: 'test1@example.com, test2@example.com',
+                        mail(
+                            to: 'parvathykrishnaonline@gmail.com',
                             subject: "Jenkins Pipeline: Unit and Integration Tests - ${stageStatus}",
                             body: "The Unit and Integration Tests stage has completed with status: ${stageStatus}. Please find the logs attached.",
                             attachLog: true
@@ -47,11 +47,11 @@ pipeline {
                 echo 'Tool: OWASP Dependency-Check '
             }
             post {
-                always {
+                success {
                     script {
                         def stageStatus = currentBuild.currentResult
-                        emailext(
-                            to: 'test1@example.com, test2@example.com',
+                        mail(
+                            to: 'parvathykrishnaonline@gmail.com',
                             subject: "Jenkins Pipeline: Security Scan - ${stageStatus}",
                             body: "The Security Scan stage has completed with status: ${stageStatus}. Please find the logs attached.",
                             attachLog: true
