@@ -60,10 +60,10 @@ pipeline {
     }
 
     post {
-        always {
-            emailext to: 'parvathykrishnaonline@gmail.com',
-                     subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName}",
-                     body: "Pipeline completed with status: ${currentBuild.result}"
+        success {
+            mail to: 'parvathykrishnaonline@gmail.com',
+                     subject: "Jenkins Git Pipeline integration email ",
+                     body: "Pipeline completed"
         }
     }
 }
